@@ -37,6 +37,7 @@ class FormCubit extends Cubit<FormState> {
   _addToState(FieldValue? field) {
     if (errors[field!.formData] == field.errorText) return;
     errors[field.formData] = field.errorText;
+    if (hasSubmitted) _calculateState();
   }
 
   submitted() {

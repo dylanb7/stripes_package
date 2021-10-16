@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 class FieldData {
   final String hintText;
   final TextEditingController controller = TextEditingController();
+  final FocusNode node = FocusNode();
   final String? Function(String, [bool]) digest;
   FieldData({required this.hintText, required this.digest});
 

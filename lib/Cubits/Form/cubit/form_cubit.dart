@@ -19,6 +19,9 @@ class FormCubit extends Cubit<FormState> {
       field.addListener(() {
         _addToState(field);
       });
+      field.formData.node.addListener(() {
+        _calculateState();
+      });
     }
   }
 
@@ -34,11 +37,10 @@ class FormCubit extends Cubit<FormState> {
   _addToState(FieldValue? field) {
     if (errors[field!.formData] == field.errorText) return;
     errors[field.formData] = field.errorText;
-    _calculateState();
   }
 
-  set submitted(bool sub) {
-    hasSubmitted = sub;
+  submitted() {
+    hasSubmitted = true;
     _calculateState();
   }
 }

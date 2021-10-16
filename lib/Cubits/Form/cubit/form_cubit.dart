@@ -42,9 +42,6 @@ class FormCubit extends Cubit<FormState> {
 
   submitted() {
     hasSubmitted = true;
-    for (var field in errors.keys) {
-      field.node.requestFocus();
-    }
     _calculateState();
   }
 }

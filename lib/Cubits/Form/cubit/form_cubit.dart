@@ -12,21 +12,16 @@ class FormCubit extends Cubit<FormState> {
 
   Map<FieldData, String?> errors = {};
 
-  Map<FieldData, bool> focused = {};
-
   FormCubit(List<FieldData> fields)
       : super(FormState.error(Map.fromIterable(fields, value: (v) => ''))) {
     for (FieldData data in fields) {
       final FieldValue field = FieldValue(formData: data, cubit: this);
       errors[field.formData] = '';
-      focused[field.formData] = false;
       field.addListener(() {
         _addToState(field);
       });
       field.formData.node.addListener(() {
-        if (focused[field] != field.formData.node.hasFocus) {
-          _calculateState();
-        }
+        _calculateState();
       });
     }
   }

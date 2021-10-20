@@ -27,5 +27,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
   }
-  bool get isAuthed => AuthUser.isEmpty(state.user);
+  bool get isAuthed => !AuthUser.isEmpty(state.user);
 }

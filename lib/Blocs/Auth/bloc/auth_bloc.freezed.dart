@@ -17,6 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthEventTearOff {
   const _$AuthEventTearOff();
 
+  _Changed changed({required AuthUser user}) {
+    return _Changed(
+      user: user,
+    );
+  }
+
   _Login login({required Map<String, dynamic> params}) {
     return _Login(
       params: params,
@@ -47,6 +53,7 @@ const $AuthEvent = _$AuthEventTearOff();
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) changed,
     required TResult Function(Map<String, dynamic> params) login,
     required TResult Function(Map<String, dynamic> params) signUp,
     required TResult Function(String email) resetPassword,
@@ -55,6 +62,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -63,6 +71,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -72,6 +81,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Changed value) changed,
     required TResult Function(_Login value) login,
     required TResult Function(_SignIn value) signUp,
     required TResult Function(_ResetPassword value) resetPassword,
@@ -80,6 +90,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -88,6 +99,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -110,6 +122,155 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
   final AuthEvent _value;
   // ignore: unused_field
   final $Res Function(AuthEvent) _then;
+}
+
+/// @nodoc
+abstract class _$ChangedCopyWith<$Res> {
+  factory _$ChangedCopyWith(_Changed value, $Res Function(_Changed) then) =
+      __$ChangedCopyWithImpl<$Res>;
+  $Res call({AuthUser user});
+}
+
+/// @nodoc
+class __$ChangedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$ChangedCopyWith<$Res> {
+  __$ChangedCopyWithImpl(_Changed _value, $Res Function(_Changed) _then)
+      : super(_value, (v) => _then(v as _Changed));
+
+  @override
+  _Changed get _value => super._value as _Changed;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_Changed(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as AuthUser,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Changed implements _Changed {
+  const _$_Changed({required this.user});
+
+  @override
+  final AuthUser user;
+
+  @override
+  String toString() {
+    return 'AuthEvent.changed(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Changed &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangedCopyWith<_Changed> get copyWith =>
+      __$ChangedCopyWithImpl<_Changed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) changed,
+    required TResult Function(Map<String, dynamic> params) login,
+    required TResult Function(Map<String, dynamic> params) signUp,
+    required TResult Function(String email) resetPassword,
+    required TResult Function() logOut,
+  }) {
+    return changed(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
+    TResult Function(Map<String, dynamic> params)? login,
+    TResult Function(Map<String, dynamic> params)? signUp,
+    TResult Function(String email)? resetPassword,
+    TResult Function()? logOut,
+  }) {
+    return changed?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
+    TResult Function(Map<String, dynamic> params)? login,
+    TResult Function(Map<String, dynamic> params)? signUp,
+    TResult Function(String email)? resetPassword,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (changed != null) {
+      return changed(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Changed value) changed,
+    required TResult Function(_Login value) login,
+    required TResult Function(_SignIn value) signUp,
+    required TResult Function(_ResetPassword value) resetPassword,
+    required TResult Function(_LogOut value) logOut,
+  }) {
+    return changed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
+    TResult Function(_Login value)? login,
+    TResult Function(_SignIn value)? signUp,
+    TResult Function(_ResetPassword value)? resetPassword,
+    TResult Function(_LogOut value)? logOut,
+  }) {
+    return changed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
+    TResult Function(_Login value)? login,
+    TResult Function(_SignIn value)? signUp,
+    TResult Function(_ResetPassword value)? resetPassword,
+    TResult Function(_LogOut value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (changed != null) {
+      return changed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Changed implements AuthEvent {
+  const factory _Changed({required AuthUser user}) = _$_Changed;
+
+  AuthUser get user => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ChangedCopyWith<_Changed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -174,6 +335,7 @@ class _$_Login implements _Login {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) changed,
     required TResult Function(Map<String, dynamic> params) login,
     required TResult Function(Map<String, dynamic> params) signUp,
     required TResult Function(String email) resetPassword,
@@ -185,6 +347,7 @@ class _$_Login implements _Login {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -196,6 +359,7 @@ class _$_Login implements _Login {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -211,6 +375,7 @@ class _$_Login implements _Login {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Changed value) changed,
     required TResult Function(_Login value) login,
     required TResult Function(_SignIn value) signUp,
     required TResult Function(_ResetPassword value) resetPassword,
@@ -222,6 +387,7 @@ class _$_Login implements _Login {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -233,6 +399,7 @@ class _$_Login implements _Login {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -316,6 +483,7 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) changed,
     required TResult Function(Map<String, dynamic> params) login,
     required TResult Function(Map<String, dynamic> params) signUp,
     required TResult Function(String email) resetPassword,
@@ -327,6 +495,7 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -338,6 +507,7 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -353,6 +523,7 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Changed value) changed,
     required TResult Function(_Login value) login,
     required TResult Function(_SignIn value) signUp,
     required TResult Function(_ResetPassword value) resetPassword,
@@ -364,6 +535,7 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -375,6 +547,7 @@ class _$_SignIn implements _SignIn {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -460,6 +633,7 @@ class _$_ResetPassword implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) changed,
     required TResult Function(Map<String, dynamic> params) login,
     required TResult Function(Map<String, dynamic> params) signUp,
     required TResult Function(String email) resetPassword,
@@ -471,6 +645,7 @@ class _$_ResetPassword implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -482,6 +657,7 @@ class _$_ResetPassword implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -497,6 +673,7 @@ class _$_ResetPassword implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Changed value) changed,
     required TResult Function(_Login value) login,
     required TResult Function(_SignIn value) signUp,
     required TResult Function(_ResetPassword value) resetPassword,
@@ -508,6 +685,7 @@ class _$_ResetPassword implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -519,6 +697,7 @@ class _$_ResetPassword implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -578,6 +757,7 @@ class _$_LogOut implements _LogOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) changed,
     required TResult Function(Map<String, dynamic> params) login,
     required TResult Function(Map<String, dynamic> params) signUp,
     required TResult Function(String email) resetPassword,
@@ -589,6 +769,7 @@ class _$_LogOut implements _LogOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -600,6 +781,7 @@ class _$_LogOut implements _LogOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? changed,
     TResult Function(Map<String, dynamic> params)? login,
     TResult Function(Map<String, dynamic> params)? signUp,
     TResult Function(String email)? resetPassword,
@@ -615,6 +797,7 @@ class _$_LogOut implements _LogOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Changed value) changed,
     required TResult Function(_Login value) login,
     required TResult Function(_SignIn value) signUp,
     required TResult Function(_ResetPassword value) resetPassword,
@@ -626,6 +809,7 @@ class _$_LogOut implements _LogOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -637,6 +821,7 @@ class _$_LogOut implements _LogOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Changed value)? changed,
     TResult Function(_Login value)? login,
     TResult Function(_SignIn value)? signUp,
     TResult Function(_ResetPassword value)? resetPassword,
@@ -658,10 +843,14 @@ abstract class _LogOut implements AuthEvent {
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
-  _AuthState call({required AuthUser user}) {
-    return _AuthState(
-      user: user,
+  _Authenticated authenticated(AuthUser user) {
+    return _Authenticated(
+      user,
     );
+  }
+
+  _Unauthenticated unauthenticated() {
+    return const _Unauthenticated();
   }
 }
 
@@ -670,10 +859,43 @@ const $AuthState = _$AuthStateTearOff();
 
 /// @nodoc
 mixin _$AuthState {
-  AuthUser get user => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AuthStateCopyWith<AuthState> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) authenticated,
+    required TResult Function() unauthenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? authenticated,
+    TResult Function()? unauthenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -681,7 +903,6 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res>;
-  $Res call({AuthUser user});
 }
 
 /// @nodoc
@@ -691,44 +912,32 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   final AuthState _value;
   // ignore: unused_field
   final $Res Function(AuthState) _then;
-
-  @override
-  $Res call({
-    Object? user = freezed,
-  }) {
-    return _then(_value.copyWith(
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as AuthUser,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$AuthStateCopyWith(
-          _AuthState value, $Res Function(_AuthState) then) =
-      __$AuthStateCopyWithImpl<$Res>;
-  @override
+abstract class _$AuthenticatedCopyWith<$Res> {
+  factory _$AuthenticatedCopyWith(
+          _Authenticated value, $Res Function(_Authenticated) then) =
+      __$AuthenticatedCopyWithImpl<$Res>;
   $Res call({AuthUser user});
 }
 
 /// @nodoc
-class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$AuthStateCopyWith<$Res> {
-  __$AuthStateCopyWithImpl(_AuthState _value, $Res Function(_AuthState) _then)
-      : super(_value, (v) => _then(v as _AuthState));
+class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$AuthenticatedCopyWith<$Res> {
+  __$AuthenticatedCopyWithImpl(
+      _Authenticated _value, $Res Function(_Authenticated) _then)
+      : super(_value, (v) => _then(v as _Authenticated));
 
   @override
-  _AuthState get _value => super._value as _AuthState;
+  _Authenticated get _value => super._value as _Authenticated;
 
   @override
   $Res call({
     Object? user = freezed,
   }) {
-    return _then(_AuthState(
-      user: user == freezed
+    return _then(_Authenticated(
+      user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as AuthUser,
@@ -738,21 +947,21 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthState implements _AuthState {
-  const _$_AuthState({required this.user});
+class _$_Authenticated implements _Authenticated {
+  const _$_Authenticated(this.user);
 
   @override
   final AuthUser user;
 
   @override
   String toString() {
-    return 'AuthState(user: $user)';
+    return 'AuthState.authenticated(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AuthState &&
+        (other is _Authenticated &&
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)));
   }
@@ -763,17 +972,180 @@ class _$_AuthState implements _AuthState {
 
   @JsonKey(ignore: true)
   @override
-  _$AuthStateCopyWith<_AuthState> get copyWith =>
-      __$AuthStateCopyWithImpl<_AuthState>(this, _$identity);
+  _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
+      __$AuthenticatedCopyWithImpl<_Authenticated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) authenticated,
+    required TResult Function() unauthenticated,
+  }) {
+    return authenticated(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? authenticated,
+    TResult Function()? unauthenticated,
+  }) {
+    return authenticated?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    required TResult orElse(),
+  }) {
+    if (authenticated != null) {
+      return authenticated(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+  }) {
+    return authenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+  }) {
+    return authenticated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    required TResult orElse(),
+  }) {
+    if (authenticated != null) {
+      return authenticated(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _AuthState implements AuthState {
-  const factory _AuthState({required AuthUser user}) = _$_AuthState;
+abstract class _Authenticated implements AuthState {
+  const factory _Authenticated(AuthUser user) = _$_Authenticated;
+
+  AuthUser get user => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UnauthenticatedCopyWith<$Res> {
+  factory _$UnauthenticatedCopyWith(
+          _Unauthenticated value, $Res Function(_Unauthenticated) then) =
+      __$UnauthenticatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UnauthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$UnauthenticatedCopyWith<$Res> {
+  __$UnauthenticatedCopyWithImpl(
+      _Unauthenticated _value, $Res Function(_Unauthenticated) _then)
+      : super(_value, (v) => _then(v as _Unauthenticated));
 
   @override
-  AuthUser get user => throw _privateConstructorUsedError;
+  _Unauthenticated get _value => super._value as _Unauthenticated;
+}
+
+/// @nodoc
+
+class _$_Unauthenticated implements _Unauthenticated {
+  const _$_Unauthenticated();
+
   @override
-  @JsonKey(ignore: true)
-  _$AuthStateCopyWith<_AuthState> get copyWith =>
-      throw _privateConstructorUsedError;
+  String toString() {
+    return 'AuthState.unauthenticated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Unauthenticated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AuthUser user) authenticated,
+    required TResult Function() unauthenticated,
+  }) {
+    return unauthenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AuthUser user)? authenticated,
+    TResult Function()? unauthenticated,
+  }) {
+    return unauthenticated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    required TResult orElse(),
+  }) {
+    if (unauthenticated != null) {
+      return unauthenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+  }) {
+    return unauthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+  }) {
+    return unauthenticated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    required TResult orElse(),
+  }) {
+    if (unauthenticated != null) {
+      return unauthenticated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Unauthenticated implements AuthState {
+  const factory _Unauthenticated() = _$_Unauthenticated;
 }

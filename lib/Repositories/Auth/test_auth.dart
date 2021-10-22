@@ -5,7 +5,7 @@ import 'package:stripe_package/Repositories/Auth/auth.dart';
 class TestAuth extends AuthRepo {
   AuthUser _user = AuthUser.empty();
 
-  StreamController<AuthUser> _authUser = StreamController();
+  final StreamController<AuthUser> _authUser = StreamController();
   @override
   Future<void> logIn(Map<String, dynamic> params) async {
     print('Logged in');

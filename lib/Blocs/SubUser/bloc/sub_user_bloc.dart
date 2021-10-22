@@ -29,7 +29,7 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
       }, load: (load) {
         _userSubscription?.cancel();
         _userSubscription =
-            _repo.users.listen((users) => add(_AllUpdated(users)));
+            _repo.users.listen((users) => add(SubUserEvent.allUpdated(users)));
         emit(const SubUserState.loading());
       }, allUpdated: (allUpdated) {
         final List<SubUser> users = allUpdated.users;

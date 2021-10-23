@@ -17,6 +17,8 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
   SubUserBloc({required repo})
       : _repo = repo,
         super(const SubUserState.initial()) {
+    _userSubscription =
+        _repo.users.listen((users) => add(SubUserEvent.allUpdated(users)));
     on<SubUserEvent>((event, emit) {
       event.map(added: (added) {
         _repo.addSubUser(added.user);
@@ -28,9 +30,6 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
         _repo.updateCurrent(changeCurrent.user);
       }, load: (load) {
         emit(const SubUserState.loading());
-        _userSubscription?.cancel();
-        _userSubscription =
-            _repo.users.listen((users) => add(SubUserEvent.allUpdated(users)));
       }, allUpdated: (allUpdated) {
         final List<SubUser> users = allUpdated.users;
         SubUser currentUser =

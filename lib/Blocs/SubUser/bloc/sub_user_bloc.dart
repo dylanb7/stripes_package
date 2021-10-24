@@ -31,6 +31,7 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
       }, load: (load) {
         emit(const SubUserState.loading());
       }, allUpdated: (allUpdated) {
+        emit(const SubUserState.initial());
         final List<SubUser> users = allUpdated.users;
         SubUser currentUser =
             current ?? (users.isEmpty ? SubUser.empty() : users.first);

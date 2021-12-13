@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_package/Util/Forms/field_data.dart';
 import 'package:stripe_package/Util/Forms/form_fields.dart';

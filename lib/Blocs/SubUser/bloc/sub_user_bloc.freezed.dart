@@ -819,7 +819,7 @@ class _$_Load with DiagnosticableTreeMixin implements _Load {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SubUserEvent.load'));
+    properties.add(DiagnosticsProperty('type', 'SubUserEvent.load'));
   }
 
   @override
@@ -1212,7 +1212,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SubUserState.initial'));
+    properties.add(DiagnosticsProperty('type', 'SubUserState.initial'));
   }
 
   @override
@@ -1331,7 +1331,7 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SubUserState.loading'));
+    properties.add(DiagnosticsProperty('type', 'SubUserState.loading'));
   }
 
   @override
@@ -1614,7 +1614,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SubUserState.error'));
+    properties.add(DiagnosticsProperty('type', 'SubUserState.error'));
   }
 
   @override

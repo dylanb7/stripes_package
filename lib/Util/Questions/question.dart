@@ -19,6 +19,8 @@ abstract class Question {
   final String type;
 
   const Question({required this.id, required this.prompt, required this.type});
+
+  static Question empty() => const Check(id: 'empty', prompt: '', type: '');
 }
 
 class FreeResponse extends Question {

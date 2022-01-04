@@ -135,7 +135,7 @@ Response responseFromJson(Map<String, dynamic> json, QuestionHome home) {
   return Selected.fromJson(json, home);
 }
 
-class DetailResponse extends Stamp {
+class DetailResponse extends Response {
   final int stampTime;
 
   final String description;
@@ -146,7 +146,7 @@ class DetailResponse extends Stamp {
     required this.description,
     required this.responses,
     required this.stampTime,
-  });
+  }) : super(question: Question.empty(), stamp: stampTime);
 
   factory DetailResponse.fromJson(
           Map<String, dynamic> json, QuestionHome home) =>

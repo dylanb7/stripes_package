@@ -28,3 +28,5 @@ const String RESPONSE_FIELD = 'response';
 const String SELECTED_FIELD = 'selected';
 const String SELECTED_FIELDS = 'all_selected';
 const String NUMERIC_RESPONSE_FIELD = 'numeric_reponse';
+
+const DESCRIPTION_FIELD = 'desc';

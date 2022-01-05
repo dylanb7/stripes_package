@@ -11,7 +11,7 @@ part 'stamp_bloc.freezed.dart';
 class StampBloc<T extends Stamp> extends Bloc<StampEvent<T>, StampState<T>> {
   final StampRepo _repo;
 
-  late StreamSubscription? stampSub;
+  StreamSubscription? stampSub;
 
   StampBloc({required StampRepo repo})
       : _repo = repo,

@@ -30,7 +30,9 @@ class StampBloc<T extends Stamp> extends Bloc<StampEvent<T>, StampState<T>> {
           _repo.removeStamp(remove.stamp);
         });
       }, update: (update) {
-        _refresh(emit, _repo.updateStamp(update.stamp));
+        _refresh(emit, () {
+          _repo.updateStamp(update.stamp);
+        });
       }, load: (load) {
         stampSub?.cancel();
         stampSub = _repo.stamps.listen((stamps) {

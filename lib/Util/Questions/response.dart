@@ -135,10 +135,14 @@ Response responseFromJson(Map<String, dynamic> json, QuestionHome home) {
   return Selected.fromJson(json, home);
 }
 
+const String DETAIL_TYPE_KEY = 'detailTypeKey';
+
 class DetailResponse extends Response {
   final int stampTime;
 
   final String description;
+
+  final String _type;
 
   final List<Response> responses;
 
@@ -146,14 +150,18 @@ class DetailResponse extends Response {
     required this.description,
     required this.responses,
     required this.stampTime,
-  }) : super(question: Question.empty(), stamp: stampTime);
+    String? detailType,
+  })  : _type = detailType ??
+            (responses.isEmpty ? 'Description' : responses.first.type),
+        super(question: Question.empty(), stamp: stampTime);
 
   factory DetailResponse.fromJson(
           Map<String, dynamic> json, QuestionHome home) =>
       DetailResponse(
           description: json[DESCRIPTION_FIELD],
           responses: responsesFromJson(json, home),
-          stampTime: json[STAMP_FIELD]);
+          stampTime: json[STAMP_FIELD],
+          detailType: json[DETAIL_TYPE_KEY]);
   @override
   int get stamp => stampTime;
 
@@ -161,11 +169,12 @@ class DetailResponse extends Response {
   Map<String, dynamic> toJson() => {
         ...responesToJson(responses),
         STAMP_FIELD: stamp,
-        DESCRIPTION_FIELD: description
+        DESCRIPTION_FIELD: description,
+        DETAIL_TYPE_KEY: _type,
       };
 
   @override
-  String get type => responses.isEmpty ? 'Description' : responses.first.type;
+  String get type => _type;
 }
 
 Map<String, dynamic> responesToJson(List<Response> responses) {

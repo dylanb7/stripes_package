@@ -7,6 +7,7 @@ import 'dart:core';
 const String USER_COLLECTION = 'user_col';
 const String TEST_COLLECTION = 'test_col';
 const String SUB_USER_COLLECTION = 'sub_user_col';
+const String RESPONSE_COLLECTION = 'user_responses';
 
 //User fields
 
@@ -29,4 +30,4 @@ const String SELECTED_FIELD = 'selected';
 const String SELECTED_FIELDS = 'all_selected';
 const String NUMERIC_RESPONSE_FIELD = 'numeric_reponse';
 
-const DESCRIPTION_FIELD = 'desc';
+const String DESCRIPTION_FIELD = 'desc';

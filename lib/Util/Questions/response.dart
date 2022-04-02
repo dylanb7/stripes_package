@@ -132,6 +132,9 @@ Response responseFromJson(Map<String, dynamic> json, QuestionHome home) {
   if (json.containsKey(RESPONSE_FIELD)) {
     return OpenResponse.fromJson(json, home);
   }
+  if (json.containsKey(DESCRIPTION_FIELD)) {
+    DetailResponse.fromJson(json, home);
+  }
   return Selected.fromJson(json, home);
 }
 

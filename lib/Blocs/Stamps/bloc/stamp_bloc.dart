@@ -13,7 +13,7 @@ const stampKey = 'stamps';
 class StampBloc<T extends Stamp> extends Bloc<StampEvent<T>, StampState<T>> {
   final StampRepo _repo;
 
-  Map<String, Object> stampCache = {};
+  List<T> stampCache = [];
 
   StreamSubscription? stampSub;
 
@@ -40,8 +40,10 @@ class StampBloc<T extends Stamp> extends Bloc<StampEvent<T>, StampState<T>> {
         });
         emit(const StampState.loading());
       }, loaded: (loaded) {
-        stampCache[stampKey] = loaded.stamps as List<T>;
-        emit(StampState.updated(loaded.stamps as List<T>));
+        if (loaded.stamps is List<T>) {
+          stampCache = loaded.stamps as List<T>;
+          emit(StampState.updated(stampCache));
+        }
       });
     });
   }
@@ -49,6 +51,6 @@ class StampBloc<T extends Stamp> extends Bloc<StampEvent<T>, StampState<T>> {
   _refresh(Emitter<StampState<T>> emit, Function operation) {
     emit(const StampState.initial());
     operation();
-    emit(StampState.updated(stampCache[stampKey] as List<T>));
+    emit(StampState.updated(stampCache));
   }
 }

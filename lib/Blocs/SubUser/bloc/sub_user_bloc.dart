@@ -14,6 +14,8 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
 
   late StreamSubscription? _userSubscription;
 
+  List<SubUser> localSub = [];
+
   SubUserBloc({required repo})
       : _repo = repo,
         super(const SubUserState.initial()) {
@@ -26,16 +28,19 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
         _repo.deleteSubUser(removed.user);
       }, edited: (edited) {
         _repo.updateSubUser(edited.user);
+        emit(SubUserState.updated(localSub,
+            current ?? (localSub.isEmpty ? SubUser.empty() : localSub.first)));
       }, changeCurrent: (changeCurrent) {
         _repo.updateCurrent(changeCurrent.user);
       }, load: (load) {
         emit(const SubUserState.loading());
       }, allUpdated: (allUpdated) {
         emit(const SubUserState.initial());
-        final List<SubUser> users = allUpdated.users;
+        localSub = allUpdated.users;
+
         SubUser currentUser =
-            current ?? (users.isEmpty ? SubUser.empty() : users.first);
-        emit(SubUserState.updated(users, currentUser));
+            current ?? (localSub.isEmpty ? SubUser.empty() : localSub.first);
+        emit(SubUserState.updated(localSub, currentUser));
       });
     });
   }

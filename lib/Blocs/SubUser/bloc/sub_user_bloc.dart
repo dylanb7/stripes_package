@@ -37,12 +37,20 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
       }, allUpdated: (allUpdated) {
         emit(const SubUserState.initial());
         localSub = allUpdated.users;
-
         SubUser currentUser =
             current ?? (localSub.isEmpty ? SubUser.empty() : localSub.first);
+        if (_repo.current != currentUser) {
+          _repo.updateCurrent(currentUser);
+        }
         emit(SubUserState.updated(localSub, currentUser));
       });
     });
+  }
+
+  @override
+  Future<void> close() {
+    _userSubscription?.cancel();
+    return super.close();
   }
 
   SubUser? get current => _repo.current;

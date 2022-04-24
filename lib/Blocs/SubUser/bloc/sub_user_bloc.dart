@@ -28,10 +28,10 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
         _repo.deleteSubUser(removed.user);
       }, edited: (edited) {
         _repo.updateSubUser(edited.user);
-        emit(SubUserState.updated(localSub,
-            current ?? (localSub.isEmpty ? SubUser.empty() : localSub.first)));
       }, changeCurrent: (changeCurrent) {
         _repo.updateCurrent(changeCurrent.user);
+        emit(SubUserState.updated(localSub,
+            current ?? (localSub.isEmpty ? SubUser.empty() : localSub.first)));
       }, load: (load) {
         emit(const SubUserState.loading());
       }, allUpdated: (allUpdated) {

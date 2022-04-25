@@ -41,8 +41,7 @@ String? passwordDigest(String val, [bool submitted = false]) {
     }
     return '';
   }
-  RegExp regExp =
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+  RegExp regExp = RegExp(r'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/');
   if (regExp.hasMatch(val)) {
     return null;
   }

@@ -20,6 +20,7 @@ const String SUB_ID = 'sub_uid';
 const String NAME_FIELD = 'name';
 const String GENDER_FIELD = 'gender';
 const String BIRTH_YEAR_FIELD = 'birth_year';
+const String CONTROL_FIELD = 'control';
 
 //Response constants
 

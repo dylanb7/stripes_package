@@ -21,13 +21,13 @@ class SubUser {
       : uid = id ?? const Uuid().v1();
 
   factory SubUser.empty() =>
-      SubUser(name: '', gender: '', birthYear: 0, isControl: true, id: '');
+      SubUser(name: '', gender: '', birthYear: 0, isControl: false, id: '');
 
   factory SubUser.fromJson({required Map<String, dynamic> json}) => SubUser(
       name: json[NAME_FIELD],
       gender: json[GENDER_FIELD],
       birthYear: json[BIRTH_YEAR_FIELD],
-      isControl: json[CONTROL_FIELD] ?? true,
+      isControl: json.containsKey(CONTROL_FIELD) ? json[CONTROL_FIELD] : false,
       id: json[SUB_ID]);
 
   Map<String, dynamic> toJson() => {

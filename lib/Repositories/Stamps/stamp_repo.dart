@@ -5,7 +5,7 @@ part 'stamp.dart';
 
 abstract class StampRepo<T extends Stamp> {
   final AuthRepo authRepo;
-  final SubUser subUser;
+  final SubUserRepo subUser;
   StampRepo({required this.authRepo, required this.subUser});
   Stream<List<T>> get stamps;
   addStamp(T stamp);

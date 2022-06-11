@@ -8,8 +8,8 @@ import 'package:uuid/uuid.dart';
 part 'sub_user.dart';
 
 abstract class SubUserRepo {
-  final AuthRepo authRepo;
-  SubUserRepo({required this.authRepo});
+  final AuthUser authUser;
+  SubUserRepo({required this.authUser});
   Stream<List<SubUser>> get users;
   Future<void> addSubUser(SubUser user);
   Future<void> deleteSubUser(SubUser user);

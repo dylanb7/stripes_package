@@ -16,8 +16,6 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
 
   List<SubUser> localSub = [];
 
-  SubUser? curr;
-
   SubUserBloc({required repo})
       : _repo = repo,
         super(const SubUserState.initial()) {
@@ -31,19 +29,14 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
       }, edited: (edited) {
         _repo.updateSubUser(edited.user);
       }, changeCurrent: (changeCurrent) {
-        _repo.updateCurrent(changeCurrent.user);
         emit(SubUserState.updated(localSub, changeCurrent.user));
       }, load: (load) {
         emit(const SubUserState.loading());
       }, allUpdated: (allUpdated) {
         emit(const SubUserState.initial());
         localSub = allUpdated.users;
-        SubUser currentUser =
-            current ?? (localSub.isEmpty ? SubUser.empty() : localSub.first);
-        if (_repo.current != currentUser && !SubUser.isEmpty(currentUser)) {
-          _repo.updateCurrent(currentUser);
-        }
-        emit(SubUserState.updated(localSub, currentUser));
+
+        emit(SubUserState.updated(localSub, localSub.first));
       });
     });
   }
@@ -54,5 +47,5 @@ class SubUserBloc extends Bloc<SubUserEvent, SubUserState> {
     return super.close();
   }
 
-  SubUser? get current => _repo.current;
+  SubUser? get current => localSub.first;
 }

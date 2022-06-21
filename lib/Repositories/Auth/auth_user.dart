@@ -32,5 +32,10 @@ class AuthUser {
   }
 
   @override
+  String toString() {
+    return 'AuthUser($uid)';
+  }
+
+  @override
   int get hashCode => uid.hashCode;
 }

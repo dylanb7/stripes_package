@@ -38,5 +38,10 @@ class SubUser {
         CONTROL_FIELD: isControl
       };
 
+  @override
+  String toString() {
+    return 'name($name) | gender($gender) | birth year($birthYear) | control($isControl)';
+  }
+
   static bool isEmpty(SubUser user) => user.uid == '';
 }

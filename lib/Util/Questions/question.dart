@@ -28,8 +28,13 @@ class FreeResponse extends Question {
 }
 
 class Numeric extends Question {
+  final num? min, max;
   const Numeric(
-      {required String id, required String prompt, required String type})
+      {required String id,
+      required String prompt,
+      required String type,
+      this.min,
+      this.max})
       : super(id: id, prompt: prompt, type: type);
 }
 
